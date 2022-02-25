@@ -180,7 +180,7 @@ hexo.extend.filter.register('before_generate', () => {
       local: '/js/lib/node-snackbar/snackbar.min.js'
     },
     fontawesomeV6: {
-      cdn: 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css',
+      cdn: 'https://npm.elemecdn.com/imcao-blog-hexo@1.0.5/fonts/fontawesome-pro-6.css',
       local: '/js/lib/fontawesome-free/dist/all.min.css'
     },
     flickr_justified_gallery_js: {
