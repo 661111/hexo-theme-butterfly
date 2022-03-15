@@ -1,4 +1,5 @@
 div
+  script(src=url_for(theme.CDN.vue))
   script(src=url_for(theme.asset.utils))
   script(src=url_for(theme.asset.main))
 
@@ -44,6 +45,9 @@ div
 
     if commentsJsLoad
       include ./third-party/comments/js.pug
+
+    if theme.gitcalendar.enable
+      !=partial('includes/gitcalendar-js', {}, {cache:theme.fragment_cache})
 
   != partial("includes/third-party/prismjs", {}, { cache: true })
 

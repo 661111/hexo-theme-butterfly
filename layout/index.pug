@@ -4,5 +4,7 @@ block content
   include ./includes/mixins/post-ui.pug
   #recent-posts.recent-posts
     include includes/bbTimeList.pug
+    if theme.gitcalendar.enable
+      !=partial('includes/gitcalendar', {}, {cache:theme.fragment_cache})
     +postUI
     include includes/pagination.pug
