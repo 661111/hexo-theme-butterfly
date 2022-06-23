@@ -11,12 +11,20 @@ hexo.extend.filter.register("before_post_render", function (data) {
   const cover = data.cover;
   if (cover) {
     let num = cover.toString().lastIndexOf("/");
-    data.cover = replace_link.replacement + '/assets/covers/' + cover.toString().substring(num + 1);
+    if (process.env.NODE_ENV == "development") {
+      data.cover = "/assets/covers/" + cover.toString().substring(num + 1);
+    } else {
+      data.cover = replace_link.replacement + "/assets/covers/" + cover.toString().substring(num + 1);
+    }
   }
   if (data) {
     const reg = new RegExp(replace_link.alias, "g");
     let num = data.source.lastIndexOf(".");
-    data.content = data.content.replace(reg, replace_link.replacement + '/' + data.source.substring(0, num));
+    if (process.env.NODE_ENV == "development") {
+      data.content = data.content.replace(reg, "/" + data.path.substring(0, data.path.length - 1));
+    } else {
+      data.content = data.content.replace(reg, replace_link.replacement + "/" + data.source.substring(0, num));
+    }
   }
   return data;
 });
