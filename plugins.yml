@@ -122,12 +122,12 @@ fancybox_css_v4:
   name: '@fancyapps/ui'
   file: dist/fancybox.css
   version: 4.0.27
-  other_name: fancyapps-ui
+  # other_name: fancyapps-ui
 fancybox_v4:
   name: '@fancyapps/ui'
   file: dist/fancybox.umd.js
   version: 4.0.27
-  other_name: fancyapps-ui
+  # other_name: fancyapps-ui
 medium_zoom:
   name: medium-zoom
   file: dist/medium-zoom.min.js
@@ -141,10 +141,10 @@ snackbar:
   file: dist/snackbar.min.js
   version: 0.1.16
 fontawesomeV6:
-  name: '@fortawesome/fontawesome-free'
-  file: css/all.min.css
-  other_name: font-awesome
-  version: 6.1.1
+  name: 'imcao-hexo'
+  file: source/assets/fonts/fontawesome-pro-6.css
+  # other_name: font-awesome
+  version: 1.1.0
 flickr_justified_gallery_js:
   name: flickr-justified-gallery
   file: dist/fjGallery.min.js
