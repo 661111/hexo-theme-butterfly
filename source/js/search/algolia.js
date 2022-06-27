@@ -49,40 +49,31 @@ window.addEventListener('load', () => {
     searchClient
   })
 
-  search.addWidgets([
-    instantsearch.widgets.configure({
-      hitsPerPage: 5
-    })
-  ])
-
-  search.addWidgets([
-    instantsearch.widgets.searchBox({
-      container: '#algolia-search-input',
-      showReset: false,
-      showSubmit: false,
-      placeholder: GLOBAL_CONFIG.algolia.languages.input_placeholder,
-      showLoadingIndicator: true
-    })
-  ])
-
-  search.addWidgets([
-    instantsearch.widgets.hits({
-      container: '#algolia-hits',
-      templates: {
-        item: function (data) {
-          const link = data.permalink ? data.permalink : (GLOBAL_CONFIG.root + data.path)
-          return `
-            <a href="${link}" class="algolia-hit-item-link">
-            ${data._highlightResult.title.value || 'no-title'}
-            </a>`
-        },
-        empty: function (data) {
-          return (
-            '<div id="algolia-hits-empty">' +
-            GLOBAL_CONFIG.algolia.languages.hits_empty.replace(/\$\{query}/, data.query) +
-            '</div>'
-          )
-        }
+  const hits = instantsearch.widgets.hits({
+    container: '#algolia-hits',
+    templates: {
+      item(data) {
+        const link = data.permalink ? data.permalink : (GLOBAL_CONFIG.root + data.path)
+        const result = data._highlightResult
+        const content = result.contentStripTruncate
+                        ? cutContent(result.contentStripTruncate.value)
+                        : result.contentStrip
+                        ? cutContent(result.contentStrip.value)
+                        : result.content
+                        ? cutContent(result.content.value)
+                        : ''
+        return `
+          <a href="${link}" class="algolia-hit-item-link">
+          ${result.title.value || 'no-title'}
+          </a>
+          <p class="algolia-hit-item-content">${content}</p>`
+      },
+      empty: function (data) {
+        return (
+          '<div id="algolia-hits-empty">' +
+          GLOBAL_CONFIG.algolia.languages.hits_empty.replace(/\$\{query}/, data.query) +
+          '</div>'
+        )
       }
     })
   ])
