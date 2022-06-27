@@ -80,7 +80,7 @@ hexo.extend.filter.register('before_generate', () => {
       local: '/js/lib/disqusjs/disqusjs.css'
     },
     twikoo: {
-      cdn: 'https://npm.elemecdn.com/twikoo/dist/twikoo.all.min.js',
+      cdn: 'https://npm.elemecdn.com/twikoo@1.5.11/dist/twikoo.all.min.js',
       local: '/js/lib/twikoo/twikoo.all.min.js'
     },
     waline: {
